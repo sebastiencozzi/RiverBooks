@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Q5GpA5wvBaCxMSoxVfTuW2c+H5j9XuxdmhvsprOW4rI=",
+  "Source": "RiverBooks.Web",
+  "BasePath": "_content/RiverBooks.Web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
