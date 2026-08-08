@@ -4,3 +4,6 @@
 GET {{RiverBooks.Web_HostAddress}}/books/
 Accept: application/json
 
+###
+GET {{RiverBooks.Web_HostAddress}}/book/19fce2dd-7e7a-49aa-8e73-f1780286a9e5
+Accept: application/json
