@@ -1,4 +1,13 @@
-﻿namespace RiverBooks.Books
+﻿namespace RiverBooks.Books;
+
+public record BookDto(Guid Id, string Title, string Author, decimal Price, string Description)
 {
-    public record BookDto(Guid id, string Title, string Author);
+  internal static BookDto FromEntity(Book book)
+  {
+    return new BookDto(book.Id, book.Title, book.Author, book.Price, book.Description);
+  }
+  internal Book ToEntity()
+  {
+    return new Book(Id, Title, Author, Description, Price);
+  }
 }
