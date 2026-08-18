@@ -1,7 +1,8 @@
 ﻿using FastEndpoints;
-namespace RiverBooks.Books;
+using RiverBooks.Books.BookEndpoints;
+namespace RiverBooks.Books.Endpoints;
 
-internal class CreateBookEndpoint(IBookService bookService) : Endpoint<CreateBookRequest, BookDto>
+internal class Create(IBookService bookService) : Endpoint<CreateRequest, BookDto>
 {
   private readonly IBookService _bookService = bookService;
 
@@ -11,7 +12,7 @@ internal class CreateBookEndpoint(IBookService bookService) : Endpoint<CreateBoo
     AllowAnonymous();
   }
 
-  public override async Task HandleAsync(CreateBookRequest req, CancellationToken ct)
+  public override async Task HandleAsync(CreateRequest req, CancellationToken ct)
   {
     var newBookDto = new BookDto(
       req.Id == Guid.Empty ? Guid.NewGuid() : req.Id,
@@ -25,7 +26,7 @@ internal class CreateBookEndpoint(IBookService bookService) : Endpoint<CreateBoo
 
     await _bookService.CreateBookAsync(newBookDto);
 
-    await Send.CreatedAtAsync<GetBookByIdEndpoint>(new { newBookDto.Id },
+    await Send.CreatedAtAsync<GetById>(new { newBookDto.Id },
       newBookDto);
   }
 }

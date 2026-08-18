@@ -10,7 +10,7 @@ internal class BookService(IBookRepository bookRepository) : IBookService
     await bookRepository.SaveChangesAsync();
   }
 
-  public async Task DeleteBookAsynx(Guid id)
+  public async Task DeleteBookAsync(Guid id)
   {
     await bookRepository.DeleteAsync(id);
     await bookRepository.SaveChangesAsync();
@@ -35,6 +35,8 @@ internal class BookService(IBookRepository bookRepository) : IBookService
   public async Task UpdateBookPrice(Guid id, decimal newPrice)
   {
     var book = await bookRepository.GetAsync(id);
+
+    //Todo : handle exception globaly
     if (book == null)
       throw new EntityNotFoundException<Book>();
     book.UpdatePrice(newPrice);

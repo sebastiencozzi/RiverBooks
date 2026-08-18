@@ -18,3 +18,16 @@ Content-Type: application/json
   "price" : 10.099,
   "description" : "So much fun !"
 }
+
+###
+DELETE {{RiverBooks.Web_HostAddress}}/books/a965d81d-2632-47ea-b41d-450e485ebea0
+Accept: application/json
+
+
+###
+PUT {{RiverBooks.Web_HostAddress}}/books/8f76bc5f-d903-44cb-8343-ead58bf75307/price
+Accept: application/json
+Content-Type: application/json
+{
+    "newPrice" : 14.099
+}

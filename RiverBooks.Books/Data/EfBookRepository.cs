@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Data;
 
 internal class EfBookRepository : IBookRepository
 {
@@ -17,10 +17,12 @@ internal class EfBookRepository : IBookRepository
     return Task.CompletedTask;
   }
 
-  public Task DeleteAsync(Guid id)
+  public async Task DeleteAsync(Guid id)
   {
-    _dbContext.Remove(id);
-    return Task.CompletedTask;
+    var book = await GetAsync(id);
+    if (book is null)
+      return;
+    _dbContext.Remove(book);
   }
 
   public async Task<List<Book>> GetAllAsync()

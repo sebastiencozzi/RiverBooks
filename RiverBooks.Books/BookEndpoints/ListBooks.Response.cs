@@ -1,4 +1,4 @@
-﻿namespace RiverBooks.Books;
+﻿namespace RiverBooks.Books.BookEndpoints;
 
 public class ListBooksResponse
 {
@@ -11,6 +11,6 @@ public class ListBooksResponse
         {
             books = new List<BookDto>();
         }
-        this.Books = books;
+        Books = books;
     }
 }
