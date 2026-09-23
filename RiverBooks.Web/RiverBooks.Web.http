@@ -29,5 +29,40 @@ PUT {{RiverBooks.Web_HostAddress}}/books/8f76bc5f-d903-44cb-8343-ead58bf75307/pr
 Accept: application/json
 Content-Type: application/json
 {
-    "newPrice" : 14.099
+    "newPrice" : -14.099
 }
+
+###
+POST {{RiverBooks.Web_HostAddress}}/users
+Accept: application/json
+Content-Type: application/json
+{
+  "email" : "shcozzi@best.com",
+  "password" : "Ardalis1!"
+}
+#### @name login
+POST {{RiverBooks.Web_HostAddress}}/users/Login
+Accept: application/json
+Content-Type: application/json
+{
+  "email" : "shcozzi@best.com",
+  "password" : "Ardalis1!"
+}
+###
+@token= {{login.response.body.$.token}}
+### Add item to cart
+POST {{RiverBooks.Web_HostAddress}}/cart
+Authorization: Bearer {{token}}
+Accept: text/plain
+Content-Type: application/json
+
+{
+  "bookid" : "60043b2c-c1e6-45f4-8c6f-463569abb5ec",
+  "quantity" : "2",
+  "token" : "{{token}}"
+}
+
+### get cart
+Get {{RiverBooks.Web_HostAddress}}/cart
+Accept: application/json
+Authorization: Bearer {{token}}
